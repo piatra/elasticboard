@@ -247,7 +247,7 @@ function populateTimeline(count, starting_from) {
     var $loading = $('#timeline-loading');
 
     // if we don't have a specified index, don't do anythin
-    if (API_BASE.indexOf('undefined/undefined') >= 0) {
+    if (App.API_BASE.indexOf('undefined/undefined') >= 0) {
         return;
     }
 
@@ -258,7 +258,7 @@ function populateTimeline(count, starting_from) {
         starting_from = 0;
     }
 
-    $.get(API_BASE + '/recent_events',
+    $.get(App.API_BASE + '/recent_events',
           {count: count, starting_from: starting_from})
           .success(function(data) {
               var fragment = document.createDocumentFragment();
@@ -267,7 +267,6 @@ function populateTimeline(count, starting_from) {
                   if (!mapping) {
                       return;
                   }
-                  console.log(e);
                   context = {
                       avatar: formatAuthor(e.actor).avatar,
                       username: formatAuthor(e.actor).username,
